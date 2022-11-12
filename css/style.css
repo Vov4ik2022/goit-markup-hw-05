@@ -33,6 +33,7 @@ img {
     --font-logo-second: #000000;  
     /* второй цвет кнопки */
     --button-color-web-second: #2196F3;
+    --button-color-web-second-hover: #0571ca;
     /* цвет емеил, тел, р,  */
     --color-font-contact-p: #757575;
     /* цвет шрифта героя и адресс */
@@ -56,6 +57,11 @@ img {
     /* сетка Flex кол-во элементов и отступ 100% - 30px*(3-1) / 3  */
     --items: 4;
     --indent: 30px;
+
+    /* Плавный переход Ховера */
+
+    --hover-effect: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    
 }
 
 .visually-hidden {
@@ -74,11 +80,7 @@ img {
 html {
     box-sizing: border-box;
 }
-/* *,
-*::before,
-*::after {
-    box-sizing: border-box;
-} */
+
 
 /* Основные параметры (цвет и фон) */
 body {
@@ -143,26 +145,48 @@ body {
     gap: 50px;
 }
 
-.nav-link {
-    display: block;
-    padding-top: 32px;
-    padding-bottom: 32px;
 
+
+.nav-link {
+    position: relative; 
+    display: block; 
+    padding-top: 32px; 
+    padding-bottom: 32px; 
     color: var(--color-font-h2-h3-name);
+    font-weight: 500; 
+    font-size: 14px; 
+    line-height: calc(16 / 14); 
+    letter-spacing: 0.02em; 
+    transition: color var(--hover-effect);
     
-    font-weight: 500;
-    font-size: 14px;
-    line-height: calc(16 / 14);
-    letter-spacing: 0.02em;
 }
 .current {
     color: var(--button-color-web-second);
 }
 
+.current::after {
+    display: block;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--button-color-web-second);  
+}
+
 .nav-link:hover,
 .nav-link:focus {
-    color: var(--button-color-web-second)
+    color: var(--button-color-web-second);
+    
 ;}
+
+/* Рисочка  */
+ .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -1%;
+    transform: translateX(-50%); 
+
+ }
 
 /* ссылка на сайт и тел */
 
@@ -182,6 +206,7 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
+    transition: color var(--hover-effect);
 }
 
 .header-contact:hover,
@@ -195,7 +220,6 @@ body {
 /* секция герой фон */
 .hero {
     background-color: var(--background-color-section1-footer);
-   
     height: 600px;
   
 }
@@ -219,21 +243,12 @@ body {
     
 }
 
-/* padding-top: 200px;
-    padding-bottom: 200px;
-  
-   
-    
-     */
-
 
 .hero-section-container {
     display: flex;
     flex-direction: column;
     align-items: center;
   
-
-
 }
 
 /* герой н1 */
@@ -266,11 +281,12 @@ body {
     min-height: 50px;
     border-radius: 4px;
     cursor: pointer;
- 
-   
-  
+    transition: background-color var(--hover-effect);
+}
 
-
+.hero-btn:hover,
+.hero-btn:focus {
+    background-color: var(--button-color-web-second-hover);
 }
 
 /* -----------------------------Секція 2/4 (Перевага)------------------- */
@@ -346,12 +362,12 @@ body {
 .overlay {
     position: absolute;
     bottom: 0;
-    width: 370px;
-    height: 70px;
+    width: 100%;
+    padding-top: 27px;
+    padding-bottom: 27px;
     background-color: rgba(47, 48, 58, 0.8);
     backdrop-filter: blur(2px);
 
-  
 }
 
 .overlay-text {
@@ -362,8 +378,7 @@ body {
     font-size: 14px;
     line-height: calc(16 / 14);
     letter-spacing: 0.03em;
-   
-
+  
 }
 
 .services-title {
@@ -374,7 +389,6 @@ body {
     letter-spacing: 0.03em;
     margin-bottom: 50px;
 }
-
 
 
 /* --------------------------Секція 4/4 (Команда - TEAM)-------------------- */
@@ -444,10 +458,6 @@ body {
     gap: 10px;
 }
 
-/* .socials-list {
-    width: 44px;
-    height: 44px;
-} */
 
 /* цвет иконки соцсети */
 .socials-link {
@@ -458,8 +468,8 @@ body {
     height: 44px;
     border-radius: 50%;
     fill: #AFB1B8;
-   
-    
+    transition: color var(--hover-effect), background-color var(--hover-effect), fill var(--hover-effect);
+    /* transition: color var(--hover-effect), background-color var(--hover-effect); */
 }
 
 .socials-link:hover,
@@ -473,7 +483,7 @@ body {
 /* __________________________Новая 5-я секция. Постійні клієнти ____________________ */
 
 
-partners
+
 
 .partners-container {
     display: flex;
@@ -489,9 +499,7 @@ partners
     letter-spacing: 0.03em;
     color: var(--color-font-h2-h3-name);
     margin-bottom: 50px;
-    
-   
-
+  
 }
 
 .partners-list {
@@ -516,7 +524,7 @@ partners
     border: 1px solid #AFB1B8;
     border-radius: 4px;
     fill: #AFB1B8;
-      
+    transition: fill var(--hover-effect);
 }
 
 .partners-link:hover,
@@ -525,11 +533,6 @@ partners
     fill: var(--color-fill-hover);
     border: 1px solid #2196F3;
 } 
-
-
-
-
-
 
 
 
@@ -583,6 +586,7 @@ partners
     font-size: 14px;
     line-height: calc(24 / 14);
     letter-spacing: 0.03em;
+    transition: color var(--hover-effect);
     
 }
 
@@ -591,8 +595,10 @@ partners
     color: var(--button-color-web-second);
 }
 
+
 .footer-item:not(:last-child) {
-    margin-bottom: 9px;;
+    margin-bottom: 9px;
+    
 }
 
 /* имеил и тел */
@@ -603,6 +609,7 @@ partners
     font-size: 14px;
     line-height: calc(24 / 14);
     letter-spacing: 0.03em; 
+    transition: color var(--hover-effect);
 }
 
 .footer-contact:hover,
@@ -614,6 +621,7 @@ partners
     font-style: normal;
     display: flex;
     flex-direction: column;
+    
 }
 
 /* Друга частина футера Приєднуйтесь */
@@ -661,6 +669,7 @@ partners
     border-radius: 50%;
     fill: var(--color-fill-white);
     background-color: rgba(255,255,255,0.1);
+    transition: background-color var(--hover-effect);
 }
 
 .footer-socials-link:hover,
@@ -669,21 +678,10 @@ partners
 }
 
 
-/* svg icon */
-footer-icon
-
-
-
-
-
-
 /* _______________________________________________________________________
 ______________________portfolio________________________________________ */
 
 /* скрытый текст h1 */
-
-
-
 
 .filters-page {
     display: flex;
@@ -701,7 +699,6 @@ ______________________portfolio________________________________________ */
 .page-filter:not(:last-child) {
     margin-right: 8px;
 }
-
 
 
 /* цвет фона */
@@ -728,7 +725,8 @@ ______________________portfolio________________________________________ */
     padding-right: 22px;
     border: none;
     align-items: center;
-
+    /* transition: color var(--hover-effect); */
+    transition: color var(--hover-effect), background-color var(--hover-effect), box-shadow var(--hover-effect);
   }
 
  .btn-filter:hover,
@@ -751,8 +749,6 @@ ______________________portfolio________________________________________ */
 .grid-item {
     flex-basis: calc((100% - (var(--indent) * ((var(--items)) - 1))) / var(--items));
 }
-
-
 
 .gallery-container {
     padding: 20px 24px;
@@ -784,10 +780,6 @@ ______________________portfolio________________________________________ */
     display: flex;
     flex-direction: column;
 }
-
-
-
-
 
 
 .team-thumb {
@@ -825,9 +817,6 @@ ______________________portfolio________________________________________ */
     transform: translateY(0);
 }
 
-
-
-
 .gallery-item:hover,
 .gallery-item:focus {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
@@ -835,33 +824,49 @@ ______________________portfolio________________________________________ */
 
 /* _____________________________________ MODALKA _________________*/
 
-/* .modal-button-close {
-
-} */
-
-
-
-
-
-/* 
-.partners-link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    border: 1px solid #AFB1B8;
-    border-radius: 4px;
-    fill: #AFB1B8;
-      
+.backdrop {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100% ;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.2);
+   opacity: 1;
+   transition: opacity var(--hover-effect);
 }
 
-.partners-link:hover,
-.partners-link:focus {
-    
-    fill: var(--color-fill-hover);
-    border: 1px solid #2196F3;
-} 
+.backdrop.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 528px;
+    min-height: 581px;
+    background-color: #FFFFFF;
+    transition: transform var(--hover-effect);
+}
 
 
- */
+.modal-button-close {
+    width: 30px;
+    height: 30px;
+
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: var(--background-color-weite);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
