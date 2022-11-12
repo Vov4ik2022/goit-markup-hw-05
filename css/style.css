@@ -851,6 +851,9 @@ ______________________portfolio________________________________________ */
     transition: transform var(--hover-effect);
 }
 
+.backdrop.is-hidden .modal {
+    transform: skew(60deg, 100deg) translateX(-80%) translateY(-30%);
+}
 
 .modal-button-close {
     width: 30px;
