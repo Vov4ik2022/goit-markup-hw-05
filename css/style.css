@@ -309,7 +309,7 @@ body {
     height: 120px;
     background-color: #F5F4FA;
     margin-bottom: 30px;
-    border-radius: 4px
+    border-radius: 4px;
 }
 /* картинка - антена, часы, диаграмма, космонафт */
 .advantage-icon {
@@ -822,7 +822,7 @@ ______________________portfolio________________________________________ */
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
-/* _____________________________________ MODALKA _________________*/
+/* ========================== MODALKA ==========================*/
 
 .backdrop {
    position: fixed;
